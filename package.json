@@ -1,0 +1,25 @@
+{
+  "name": "chatterax",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myztajay/Chatterax.git"
+  },
+  "keywords": [],
+  "author": "Rafael Fernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myztajay/Chatterax/issues"
+  },
+  "homepage": "https://github.com/myztajay/Chatterax#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socketio": "^1.0.0"
+  }
+}
