@@ -7,13 +7,24 @@
   </head>
   <body>
     <div class="container">
-        <div class="chat-window">
-          wqer
-        </div>
-        <form class="" >
-          <input type="text" name="" placeholder="Enter Message" value="" />
-          <input type="button" name="button" value="Submit"></input>
+      <div class="" id="error">
+        
+      </div>
+      <div class="" id="usernameContainer">
+        <form class="" id="usernameForm">
+          <input type="text" name="" placeholder="Enter Username" value="" id='username' />
+          <input type="submit" name="button" value="Submit"></input>  
         </form>
+      </div>
+      <div id="usernames"></div>
+      <div class="chat-container" id='chatContainer'>
+        <div class="chat-window" id='chatWindow'>
+        </div>
+        <form class="" id="messageForm">
+          <input type="text" name="" placeholder="Enter Message" value="" id='messageField' />
+          <input type="submit" name="button" value="Submit"></input>
+        </form>
+      </div>
     </div>
   <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -22,9 +33,46 @@
   <script src='/socket.io/socket.io.js'></script>
   <script>
     $(()=>{
-      var socket = io.connect();  
-      }
-    )
+      let socket = io.connect(); 
+      let $messageForm = $('#messageForm')
+      let $message = $('#messageField');
+      let $chat = $('#chatWindow');
+      let $usernameForm = $('#usernameForm');
+      let $usernames = $('#usernames');
+      let $username = $('#username');
+      let $error = $('#error');
+      
+      $usernameForm.submit((e)=>{
+        e.preventDefault();
+        socket.emit('new user', $username.val(), (data)=>{
+          if(data){ 
+            $('#usernameContainer').hide();
+            $('#chatContainer').show();
+          } else {  
+            $error.html('username is taken');        
+          }
+        });
+        $username.val('');
+      })
+      
+      $messageForm.submit((e)=>{
+        e.preventDefault();
+        socket.emit('send message', $message.val());
+        $message.val('');
+      })
+      socket.on('new message', (data)=>{
+        $chat.append(`<strong>${data.user}:</strong>  ${data.msg}<br>`)
+      })
+      
+      socket.on('usernames', (data)=>{
+        let html = ''
+        data.forEach((username)=>{          
+          html += username + '<br>';
+        })
+        $usernames.html(html);
+      });
+      
+    })
   </script>
   </body>
 </html>
