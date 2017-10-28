@@ -1,0 +1,17 @@
+body {
+  background: #bdc3c7; }
+
+.container {
+  width: 80%;
+  margin: 0 auto; }
+
+.chat-window {
+  margin: auto;
+  width: 80%;
+  height: 60vh;
+  background-color: #ecf0f1; }
+
+form {
+  padding: 10px;
+  width: 225px;
+  margin: 0 auto; }

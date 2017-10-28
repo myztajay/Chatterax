@@ -3,9 +3,28 @@
   <head>
     <meta charset="utf-8">
     <title>Chatterax</title>
-    <link rel="stylesheet" href="/public/style.css">
+    <link rel="stylesheet" href="./public/style.css" />
   </head>
   <body>
-    <h1>yo yo yo</h1>
+    <div class="container">
+        <div class="chat-window">
+          wqer
+        </div>
+        <form class="" >
+          <input type="text" name="" placeholder="Enter Message" value="" />
+          <input type="button" name="button" value="Submit"></input>
+        </form>
+    </div>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script> 
+  <script src='/socket.io/socket.io.js'></script>
+  <script>
+    $(()=>{
+      var socket = io.connect();  
+      }
+    )
+  </script>
   </body>
 </html>
